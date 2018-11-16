@@ -39,16 +39,16 @@ public class RegistroProduto {
 	@Column(name = "VALOR_PRODUTO")
 	private Double valorProduto;
 
-	@OneToOne(targetEntity = Produto.class)
+	@OneToOne(targetEntity = Product.class)
 	@JoinColumn(name = "ID_PRODUTO", referencedColumnName = "ID_PRODUTO")
-	private Produto produto;
+	private Product produto;
 
 	@ManyToOne(targetEntity = Usuario.class, fetch = FetchType.LAZY)
-	@JoinColumn(name = "ID_USUARIO", referencedColumnName = "ID_PRODUTO")
+	@JoinColumn(name = "ID_USUARIO", referencedColumnName = "ID_USUARIO")
 	private Usuario usuario;
 
 	@ManyToOne(targetEntity = Usuario.class, fetch = FetchType.LAZY)
-	@JoinColumn(name = "ID_CLIENTE", referencedColumnName = "ID_PRODUTO")
+	@JoinColumn(name = "ID_CLIENTE", referencedColumnName = "ID_USUARIO")
 	private Usuario cliente;
 
 	public Long getId() {
@@ -91,11 +91,11 @@ public class RegistroProduto {
 		this.valorProduto = valorProduto;
 	}
 
-	public Produto getProduto() {
+	public Product getProduto() {
 		return produto;
 	}
 
-	public void setProduto(Produto produto) {
+	public void setProduto(Product produto) {
 		this.produto = produto;
 	}
 

@@ -13,7 +13,7 @@ import br.com.alberto.properties.PropertiesUtil;
 @Entity
 @Table(name = "PRODUTO", schema = PropertiesUtil.SCHEMA)
 @SequenceGenerator(name = "SEQ_PRODUTO", sequenceName = "SEQ_PRODUTO", schema = PropertiesUtil.SCHEMA, allocationSize = 1, initialValue = 1)
-public class Produto {
+public class Product {
 
 	@Id
 	@GeneratedValue(generator = "SEQ_PRODUTO", strategy = GenerationType.SEQUENCE)
