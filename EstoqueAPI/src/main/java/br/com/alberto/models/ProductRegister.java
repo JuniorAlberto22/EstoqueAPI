@@ -19,7 +19,7 @@ import br.com.alberto.properties.PropertiesUtil;
 @Entity
 @Table(name = "REGISTRO_PRODUTO", schema = PropertiesUtil.SCHEMA)
 @SequenceGenerator(name = "SEQ_REGISTRO_PRODUTO", sequenceName = "SEQ_REGISTRO_PRODUTO", schema = PropertiesUtil.SCHEMA, allocationSize = 1, initialValue = 1)
-public class RegistroProduto {
+public class ProductRegister {
 
 	@Id
 	@Column(name = "ID_REGISTRO_PRODUTO")
@@ -29,9 +29,9 @@ public class RegistroProduto {
 	@Column(name = "DATA_REGISTRO")
 	private Date dataRegistro;
 
-	@ManyToOne(targetEntity = TipoRegistroProduto.class, fetch = FetchType.LAZY)
+	@ManyToOne(targetEntity = ProductTransactionType.class, fetch = FetchType.LAZY)
 	@JoinColumn(name = "TIPO_REGISTRO_PRODUTO", referencedColumnName = "ID_TIPO_REGISTRO")
-	private TipoRegistroProduto tipoRegistroProduto;
+	private ProductTransactionType tipoRegistroProduto;
 
 	@Column(name = "QUANTIDADE_PRODUTO")
 	private Integer quantidadeProduto;
@@ -43,13 +43,13 @@ public class RegistroProduto {
 	@JoinColumn(name = "ID_PRODUTO", referencedColumnName = "ID_PRODUTO")
 	private Product produto;
 
-	@ManyToOne(targetEntity = Usuario.class, fetch = FetchType.LAZY)
+	@ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
 	@JoinColumn(name = "ID_USUARIO", referencedColumnName = "ID_USUARIO")
-	private Usuario usuario;
+	private User usuario;
 
-	@ManyToOne(targetEntity = Usuario.class, fetch = FetchType.LAZY)
+	@ManyToOne(targetEntity = User.class, fetch = FetchType.LAZY)
 	@JoinColumn(name = "ID_CLIENTE", referencedColumnName = "ID_USUARIO")
-	private Usuario cliente;
+	private User cliente;
 
 	public Long getId() {
 		return id;
@@ -67,11 +67,11 @@ public class RegistroProduto {
 		this.dataRegistro = dataRegistro;
 	}
 
-	public TipoRegistroProduto getTipoRegistroProduto() {
+	public ProductTransactionType getTipoRegistroProduto() {
 		return tipoRegistroProduto;
 	}
 
-	public void setTipoRegistroProduto(TipoRegistroProduto tipoRegistroProduto) {
+	public void setTipoRegistroProduto(ProductTransactionType tipoRegistroProduto) {
 		this.tipoRegistroProduto = tipoRegistroProduto;
 	}
 
@@ -99,19 +99,19 @@ public class RegistroProduto {
 		this.produto = produto;
 	}
 
-	public Usuario getUsuario() {
+	public User getUsuario() {
 		return usuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
+	public void setUsuario(User usuario) {
 		this.usuario = usuario;
 	}
 
-	public Usuario getCliente() {
+	public User getCliente() {
 		return cliente;
 	}
 
-	public void setCliente(Usuario cliente) {
+	public void setCliente(User cliente) {
 		this.cliente = cliente;
 	}
 

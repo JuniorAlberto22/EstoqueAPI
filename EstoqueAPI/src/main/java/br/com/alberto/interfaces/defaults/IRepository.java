@@ -13,6 +13,8 @@ public interface IRepository<T, Pk extends Serializable> {
 	
 	public void delete(T entity) throws RapierException;
 	
+	public void deleteById(Pk pk) throws RapierException;
+
 	public T findById(Pk pk) throws RapierException;
 	
 	public List<T> list() throws RapierException;

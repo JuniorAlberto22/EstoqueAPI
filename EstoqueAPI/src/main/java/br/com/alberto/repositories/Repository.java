@@ -29,6 +29,7 @@ public class Repository<T, Pk extends Serializable> implements IRepository<T, Pk
 		return (Session) em.getDelegate();
 	}
 	
+	@Override
 	public Serializable save(T entity) throws RapierException {
 		try {
 			return getSession().save(entity);
@@ -38,6 +39,7 @@ public class Repository<T, Pk extends Serializable> implements IRepository<T, Pk
 		}
 	}
 	
+	@Override
 	public T update(T entity) throws RapierException {
 		try {
 			getSession().update(entity);
@@ -48,6 +50,7 @@ public class Repository<T, Pk extends Serializable> implements IRepository<T, Pk
 		}
 	}
 	
+	@Override
 	public void delete(T entity) throws RapierException {
 		try {
 			getSession().delete(entity);
@@ -56,7 +59,19 @@ public class Repository<T, Pk extends Serializable> implements IRepository<T, Pk
 			throw new RapierException(StringUtil.concat("Error when tried to delete the entity: ", className));
 		}
 	}
+
+	@Override
+	public void deleteById(Pk pk) throws RapierException {
+		try {
+			T entity = findById(pk);
+			getSession().delete(entity);
+		} catch (Exception e) {
+			String className = classType.getName();
+			throw new RapierException(StringUtil.concat("Error when tried to delete the entity: ", className));
+		}
+	}
 	
+	@Override
 	public T findById(Pk pk) throws RapierException {
 		try {
 			return em.find(this.classType, pk);
@@ -66,6 +81,7 @@ public class Repository<T, Pk extends Serializable> implements IRepository<T, Pk
 		}
 	}
 	
+	@Override
 	public List<T> list() throws RapierException{
 		try {
 			return getSession().createCriteria(classType).list();

@@ -11,17 +11,16 @@ import javax.persistence.Table;
 import br.com.alberto.properties.PropertiesUtil;
 
 @Entity
-@Table(name = "TIPO_MOVIMENTACAO", schema = PropertiesUtil.SCHEMA)
-@SequenceGenerator(name="SEQ_TIPO_MOVIMENTACAO", schema=PropertiesUtil.SCHEMA, allocationSize=1,
-initialValue=1, sequenceName="SEQ_TIPO_MOVIMENTACAO")
-public class TipoMovimentacao {
+@Table(name = "TIPO_ACESSO_USUARIO", schema = PropertiesUtil.SCHEMA)
+@SequenceGenerator(name = "SEQ_TIPO_ACESSO_USUARIO", sequenceName = "SEQ_TIPO_ACESSO_USUARIO", schema = PropertiesUtil.SCHEMA, allocationSize = 1, initialValue = 1)
+public class UserAccessType {
 
 	@Id
-	@GeneratedValue(generator="SEQ_TIPO_MOVIMENTACAO", strategy=GenerationType.SEQUENCE)
-	@Column(name="ID_MOVIMENTACAO")
+	@Column(name = "ID_ACESSO_USUARIO")
+	@GeneratedValue(generator = "SEQ_TIPO_ACESSO_USUARIO", strategy = GenerationType.SEQUENCE)
 	private Long id;
 
-	@Column(name="DESCRICAO_MOVIMENTACAO")
+	@Column(name = "DESCRICAO_ACESSO_USUARIO")
 	private String descricao;
 
 	public Long getId() {

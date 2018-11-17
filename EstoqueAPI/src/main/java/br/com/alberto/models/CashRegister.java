@@ -20,7 +20,7 @@ import br.com.alberto.properties.PropertiesUtil;
 @Entity
 @Table(name = "CAIXA", schema = PropertiesUtil.SCHEMA)
 @SequenceGenerator(name = "SEQ_CAIXA", sequenceName = "SEQ_CAIXA", schema = PropertiesUtil.SCHEMA, allocationSize = 1, initialValue = 1)
-public class Caixa {
+public class CashRegister {
 
 	@Id
 	@GeneratedValue(generator="SEQ_CAIXA", strategy=GenerationType.SEQUENCE)
@@ -34,9 +34,9 @@ public class Caixa {
 	@Column(name="VALOR_MOVIMENTACAO")
 	private Double valorMovimentacao;
 	
-	@ManyToOne(targetEntity=TipoMovimentacao.class, fetch=FetchType.LAZY)
+	@ManyToOne(targetEntity=TransactionType.class, fetch=FetchType.LAZY)
 	@JoinColumn(name="TIPO_MOVIMENTACAO", referencedColumnName="ID_MOVIMENTACAO")
-	private TipoMovimentacao tipoMovimentacao;
+	private TransactionType tipoMovimentacao;
 
 	public Long getId() {
 		return id;
@@ -62,11 +62,11 @@ public class Caixa {
 		this.valorMovimentacao = valorMovimentacao;
 	}
 
-	public TipoMovimentacao getTipoMovimentacao() {
+	public TransactionType getTipoMovimentacao() {
 		return tipoMovimentacao;
 	}
 
-	public void setTipoMovimentacao(TipoMovimentacao tipoMovimentacao) {
+	public void setTipoMovimentacao(TransactionType tipoMovimentacao) {
 		this.tipoMovimentacao = tipoMovimentacao;
 	}
 

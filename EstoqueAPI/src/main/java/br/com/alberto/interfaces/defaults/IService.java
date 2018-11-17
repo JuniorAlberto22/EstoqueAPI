@@ -12,6 +12,8 @@ public interface IService<T, Pk extends Serializable> {
 	public T update(T entity) throws RapierException;
 	
 	public void delete(T entity) throws RapierException;
+
+	public void deleteById(Pk pk) throws RapierException;
 	
 	public T findById(Pk pk) throws RapierException;
 	

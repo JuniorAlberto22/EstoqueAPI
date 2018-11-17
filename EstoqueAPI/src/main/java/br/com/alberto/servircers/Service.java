@@ -32,6 +32,11 @@ public class Service<T, Pk extends Serializable> implements IService<T, Pk>{
 	}
 
 	@Override
+	public void deleteById(Pk pk) throws RapierException {
+		this.repository.deleteById(pk);
+	}
+
+	@Override
 	public T findById(Pk pk) throws RapierException {
 		return this.repository.findById(pk);
 	}

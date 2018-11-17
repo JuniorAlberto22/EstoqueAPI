@@ -20,16 +20,16 @@ import br.com.alberto.properties.PropertiesUtil;
 @Entity
 @Table(name = "USUARIO", schema = PropertiesUtil.SCHEMA)
 @SequenceGenerator(name = "SEQ_USUARIO", sequenceName = "SEQ_USUARIO", schema = PropertiesUtil.SCHEMA, allocationSize = 1, initialValue = 1)
-public class Usuario {
+public class User {
 
 	@Id
 	@Column(name = "ID_USUARIO")
 	@GeneratedValue(generator = "SEQ_USUARIO", strategy = GenerationType.SEQUENCE)
 	private Long id;
 
-	@ManyToOne(targetEntity=TipoAcessoUsuario.class, fetch=FetchType.LAZY)
+	@ManyToOne(targetEntity=UserAccessType.class, fetch=FetchType.LAZY)
 	@JoinColumn(name="TIPO_ACESSO_USUARIO", referencedColumnName="ID_ACESSO_USUARIO")
-	private TipoAcessoUsuario tipoAcessoUsuario;
+	private UserAccessType tipoAcessoUsuario;
 	
 	@Column(name="DATA_REGISTRO")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -60,11 +60,11 @@ public class Usuario {
 		this.login = login;
 	}
 
-	public TipoAcessoUsuario getTipoAcessoUsuario() {
+	public UserAccessType getTipoAcessoUsuario() {
 		return tipoAcessoUsuario;
 	}
 
-	public void setTipoAcessoUsuario(TipoAcessoUsuario tipoAcessoUsuario) {
+	public void setTipoAcessoUsuario(UserAccessType tipoAcessoUsuario) {
 		this.tipoAcessoUsuario = tipoAcessoUsuario;
 	}
 
